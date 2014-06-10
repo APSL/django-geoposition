@@ -4,6 +4,12 @@ if (jQuery != undefined) {
     }
 }
 
+// Compatibility with yawd-admin
+try {
+    django["jQuery"] = yawdadmin.jQuery;
+} catch(e) {}
+
+
 (function($) {
     $(document).ready(function() {
         var mapDefaults = {

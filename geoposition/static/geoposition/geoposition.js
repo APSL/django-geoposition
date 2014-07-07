@@ -1,6 +1,8 @@
-if (jQuery != undefined) {
-    var django = {
-        'jQuery': jQuery,
+if (typeof django === "undefined") {
+    if (jQuery != undefined) {
+	var django = {
+            'jQuery': jQuery
+	}
     }
 }
 
@@ -167,5 +169,6 @@ try {
                 doGeocode();
             });
         });
+	
     });
 })(django.jQuery);

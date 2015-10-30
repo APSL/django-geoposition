@@ -128,7 +128,10 @@ try {
             $searchInput.appendTo($searchRow);
             $container.append($searchRow, $mapContainer, $addressRow);
 
-            mapLatLng = new google.maps.LatLng(latitude, longitude);
+            mapLatLng = new google.maps.LatLng(
+                latitude !== null ? latitude : 0,
+                longitude !== null ? longitude : 0
+            );
 
             mapOptions = $.extend({}, mapDefaults, mapCustomOptions);
 

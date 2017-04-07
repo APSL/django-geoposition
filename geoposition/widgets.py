@@ -9,6 +9,8 @@ from .conf import settings
 
 
 class GeopositionWidget(forms.MultiWidget):
+    template_name = 'geoposition/widgets/geoposition.html'
+
     def __init__(self, attrs=None):
         widgets = (
             forms.TextInput(),
@@ -23,8 +25,11 @@ class GeopositionWidget(forms.MultiWidget):
             return [value.latitude, value.longitude]
         return [None, None]
 
+    def get_template_name(self):
+        return self.template_name
+
     def format_output(self, rendered_widgets):
-        return render_to_string('geoposition/widgets/geoposition.html', {
+        return render_to_string(self.get_template_name(), {
             'latitude': {
                 'html': rendered_widgets[0],
                 'label': _("latitude"),
